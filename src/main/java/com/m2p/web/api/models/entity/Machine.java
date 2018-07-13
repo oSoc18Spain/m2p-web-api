@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,8 +25,12 @@ public class Machine implements Serializable {
 	
 	private String data;
 	
-	@OneToMany(mappedBy="maquina")
-	private Set<NotifyAlert> maquinas;
+	@OneToMany(mappedBy="machineObj")
+	private Set<Event> events;
+	
+	@ManyToOne
+	@JoinColumn(name="linechanel_id")
+	private LineChanel linechanelObj;
 	
 	public Long getId() {
 		return id;
@@ -58,5 +64,21 @@ public class Machine implements Serializable {
 		this.data = data;
 	}
 
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+	public LineChanel getLinechanelObj() {
+		return linechanelObj;
+	}
+
+	public void setLinechanelObj(LineChanel linechanelObj) {
+		this.linechanelObj = linechanelObj;
+	}
+	
 	private static final long serialVersionUID = 1L;
 }

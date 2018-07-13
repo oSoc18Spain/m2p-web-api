@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +28,14 @@ public class Suscription implements Serializable {
 	@Column(name="hoursuscription")
 	@Temporal(TemporalType.TIME)
 	private Date hourSuscription;
+	
+	@ManyToOne
+	@JoinColumn(name="linechanel_id")
+	private LineChanel linechanelObj;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User userObj;
 	
 	public Long getId() {
 		return id;
@@ -49,6 +59,22 @@ public class Suscription implements Serializable {
 
 	public void setHourSuscription(Date hourSuscription) {
 		this.hourSuscription = hourSuscription;
+	}
+
+	public LineChanel getLinechanelObj() {
+		return linechanelObj;
+	}
+
+	public void setLinechanelObj(LineChanel linechanelObj) {
+		this.linechanelObj = linechanelObj;
+	}
+
+	public User getUserObj() {
+		return userObj;
+	}
+
+	public void setUserObj(User userObj) {
+		this.userObj = userObj;
 	}
 
 	private static final long serialVersionUID = 1L;

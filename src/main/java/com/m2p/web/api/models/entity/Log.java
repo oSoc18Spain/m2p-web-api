@@ -10,14 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="notifyalert")
-public class NotifyAlert implements Serializable {
+@Table(name="log")
+public class Log implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -38,25 +37,15 @@ public class NotifyAlert implements Serializable {
 	@Temporal(TemporalType.TIME)
 	private Date finalHour;
 	
-	private String description;
-	
-	private String state;
-	
-	@OneToOne
-	@JoinColumn(name = "rolid")
-	private Role rol;
-	
-	@OneToOne
-	@JoinColumn(name = "userate")
-	private User userA;
+	private String observacion;
 	
 	@ManyToOne
-	@JoinColumn(name="usergen")
-	private User userG;
+	@JoinColumn(name="event_id")
+	private State eventObj;
 	
 	@ManyToOne
-	@JoinColumn(name="maquinaid")
-	private Machine maquina;
+	@JoinColumn(name="user_resp_id")
+	private User userRespObj;
 	
 	public Long getId() {
 		return id;
@@ -65,7 +54,7 @@ public class NotifyAlert implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public Date getIniDate() {
 		return iniDate;
 	}
@@ -98,21 +87,29 @@ public class NotifyAlert implements Serializable {
 		this.finalHour = finalHour;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getObservacion() {
+		return observacion;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
-	public String getState() {
-		return state;
+	public State getEventObj() {
+		return eventObj;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setEventObj(State eventObj) {
+		this.eventObj = eventObj;
 	}
 
+	public User getUserRespObj() {
+		return userRespObj;
+	}
+
+	public void setUserRespObj(User userRespObj) {
+		this.userRespObj = userRespObj;
+	}
+	
 	private static final long serialVersionUID = 1L;
 }

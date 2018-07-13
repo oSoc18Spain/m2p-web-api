@@ -11,16 +11,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="role")
-public class Role implements Serializable {
+@Table(name="state")
+public class State implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String name;
 	
-	@OneToMany(mappedBy="roleObj")
-	private Set<User> usuarios;
+	@OneToMany(mappedBy="stateObj")
+	private Set<Event> events;
 	
 	public Long getId() {
 		return id;
@@ -29,7 +29,7 @@ public class Role implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -38,12 +38,12 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 	
-	public Set<User> getUsuarios() {
-		return usuarios;
+	public Set<Event> getEvents() {
+		return events;
 	}
 
-	public void setUsuarios(Set<User> usuarios) {
-		this.usuarios = usuarios;
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 
 	private static final long serialVersionUID = 1L;
