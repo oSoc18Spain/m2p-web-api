@@ -11,27 +11,37 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="role")
-public class Role implements Serializable {
+@Table(name="task")
+public class Task implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotEmpty
+	@NotNull
+	private String code;
+	
+	@NotEmpty
+	@NotNull
 	private String name;
 	
-	@OneToMany(mappedBy="roleObj", fetch=FetchType.LAZY)
+	@NotEmpty
+	@NotNull
+	private String type; // { NOTIFICATION, EVENT } 
+	
+	@OneToMany(mappedBy="taskObj", fetch=FetchType.LAZY)
 	@JsonIgnore
-	private List<User> usuarios;
+	private List<Event> currentEvents;
 	
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -43,13 +53,29 @@ public class Role implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public List<User> getUsuarios() {
-		return usuarios;
+
+	public String getType() {
+		return type;
 	}
 
-	public void setUsuarios(List<User> usuarios) {
-		this.usuarios = usuarios;
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public List<Event> getCurrentEvents() {
+		return currentEvents;
+	}
+
+	public void setCurrentEvents(List<Event> currentEvents) {
+		this.currentEvents = currentEvents;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	private static final long serialVersionUID = 1L;

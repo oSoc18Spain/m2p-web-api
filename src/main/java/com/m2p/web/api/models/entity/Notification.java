@@ -20,36 +20,37 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="log")
-public class Log implements Serializable {
+@Table(name="notification")
+public class Notification implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="inidate")
 	@NotEmpty
 	@NotNull
+	private String message;
+	
+	@NotEmpty
+	@NotNull
+	private String type; //{ AUTOMATIC, MANUAL}
+	
+	@Column(name="date")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
-	private Date iniDate;
-	
-	@Column(name="finaldate")
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
-	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
-	private Date finalDate;
-	
-	private String observation;
+	private Date date;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="user_resp_id")
-	private User userRespObj;
+	@JoinColumn(name="machine_id")
+	@JsonIgnore
+	private Machine machineObj;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="event_id")
+	@JsonIgnore
 	private Event eventObj;
 	
 	public Long getId() {
@@ -60,38 +61,38 @@ public class Log implements Serializable {
 		this.id = id;
 	}
 
-	public Date getIniDate() {
-		return iniDate;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setIniDate(Date iniDate) {
-		this.iniDate = iniDate;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public Date getFinalDate() {
-		return finalDate;
+	public String getType() {
+		return type;
 	}
 
-	public void setFinalDate(Date finalDate) {
-		this.finalDate = finalDate;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getObservation() {
-		return observation;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setObservation(String observation) {
-		this.observation = observation;
-	}
-
-	public User getUserRespObj() {
-		return userRespObj;
-	}
-
-	public void setUserRespObj(User userRespObj) {
-		this.userRespObj = userRespObj;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
+	public Machine getMachineObj() {
+		return machineObj;
+	}
+
+	public void setMachineObj(Machine machineObj) {
+		this.machineObj = machineObj;
+	}
+
 	public Event getEventObj() {
 		return eventObj;
 	}

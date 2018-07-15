@@ -2,10 +2,11 @@ package com.m2p.web.api.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="event")
@@ -23,36 +31,47 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="inidate")
-	@Temporal(TemporalType.DATE)
-	private Date iniDate;
+	@NotEmpty
+	@NotNull
+	private String stateEvent; // {NA, EP, F}
 	
-	@Column(name="finaldate")
-	@Temporal(TemporalType.DATE)
-	private Date finalDate;
+	@NotEmpty
+	@NotNull
+	private String descripcion;
 	
-	@Column(name="inihour")
-	@Temporal(TemporalType.TIME)
-	private Date iniHour;
+	@NotEmpty
+	@NotNull
+	private String type; //{ AUTOMATIC, MANUAL}
 	
-	@Column(name="finalhour")
-	@Temporal(TemporalType.TIME)
-	private Date finalHour;
+	@Column(name="date")
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotEmpty
+	@NotNull
+	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+	private Date date;
 	
-	@ManyToOne
-	@JoinColumn(name="state_id")
-	private State stateObj;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="task_id")
+	private Task taskObj;
 	
-	@OneToMany(mappedBy="eventObj")
-	private Set<Log> logs;
+	@OneToMany(mappedBy="eventObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Log> logs;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="machine_id")
+	@JsonIgnore
 	private Machine machineObj;
 	
-	@ManyToOne
-	@JoinColumn(name="useractual_id")
-	private User useractualObj;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="userassigned_id")
+	@JsonIgnore
+	private User userAssignedObj;
+	
+	@OneToMany(mappedBy="eventObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Notification> notifications;
 	
 	public Long getId() {
 		return id;
@@ -62,54 +81,38 @@ public class Event implements Serializable {
 		this.id = id;
 	}
 	
-	public Date getIniDate() {
-		return iniDate;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setIniDate(Date iniDate) {
-		this.iniDate = iniDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public Date getFinalDate() {
-		return finalDate;
+	public String getStateEvent() {
+		return stateEvent;
 	}
 
-	public void setFinalDate(Date finalDate) {
-		this.finalDate = finalDate;
+	public void setStateEvent(String stateEvent) {
+		this.stateEvent = stateEvent;
 	}
 
-	public Date getIniHour() {
-		return iniHour;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setIniHour(Date iniHour) {
-		this.iniHour = iniHour;
-	}
-
-	public Date getFinalHour() {
-		return finalHour;
-	}
-
-	public void setFinalHour(Date finalHour) {
-		this.finalHour = finalHour;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
-	public State getStateObj() {
-		return stateObj;
-	}
-
-	public void setStateObj(State stateObj) {
-		this.stateObj = stateObj;
-	}
-	
-	public Set<Log> getLogs() {
+	public List<Log> getLogs() {
 		return logs;
 	}
 
-	public void setLogs(Set<Log> logs) {
+	public void setLogs(List<Log> logs) {
 		this.logs = logs;
 	}
-	
+
 	public Machine getMachineObj() {
 		return machineObj;
 	}
@@ -118,12 +121,36 @@ public class Event implements Serializable {
 		this.machineObj = machineObj;
 	}
 	
-	public User getUseractualObj() {
-		return useractualObj;
+	public User getUserAssignedObj() {
+		return userAssignedObj;
 	}
 
-	public void setUseractualObj(User useractualObj) {
-		this.useractualObj = useractualObj;
+	public void setUserAssignedObj(User userAssignedObj) {
+		this.userAssignedObj = userAssignedObj;
+	}
+
+	public Task getTaskObj() {
+		return taskObj;
+	}
+
+	public void setTaskObj(Task taskObj) {
+		this.taskObj = taskObj;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
 	}
 
 	private static final long serialVersionUID = 1L;

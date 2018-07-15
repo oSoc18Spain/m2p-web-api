@@ -1,14 +1,19 @@
 package com.m2p.web.api.models.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="linechanel")
@@ -17,15 +22,21 @@ public class LineChanel implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String typeLineChanel;
+	@NotEmpty
+	@NotNull
+	private String type;
 	
-	private String nameLineChanel;
+	@NotEmpty
+	@NotNull
+	private String name;
 	
-	@OneToMany(mappedBy="linechanelObj")
-	private Set<Machine> machines;
+	@OneToMany(mappedBy="linechanelObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Machine> machines;
 	
-	@OneToMany(mappedBy="linechanelObj")
-	private Set<Suscription> suscriptions;
+	@OneToMany(mappedBy="linechanelObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Suscription> suscriptions;
 
 	public Long getId() {
 		return id;
@@ -34,38 +45,38 @@ public class LineChanel implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public String getTypeLineChanel() {
-		return typeLineChanel;
+
+	public String getType() {
+		return type;
 	}
 
-	public void setTypeLineChanel(String typeLineChanel) {
-		this.typeLineChanel = typeLineChanel;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getNameLineChanel() {
-		return nameLineChanel;
+	public String getName() {
+		return name;
 	}
 
-	public void setNameLineChanel(String nameLineChanel) {
-		this.nameLineChanel = nameLineChanel;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Set<Machine> getMachines() {
+	public List<Machine> getMachines() {
 		return machines;
 	}
 
-	public void setMachines(Set<Machine> machines) {
+	public void setMachines(List<Machine> machines) {
 		this.machines = machines;
 	}
 
-	public Set<Suscription> getSuscriptions() {
+	public List<Suscription> getSuscriptions() {
 		return suscriptions;
 	}
 
-	public void setSuscriptions(Set<Suscription> suscriptions) {
+	public void setSuscriptions(List<Suscription> suscriptions) {
 		this.suscriptions = suscriptions;
 	}
-
+	
 	private static final long serialVersionUID = 1L;
 }
