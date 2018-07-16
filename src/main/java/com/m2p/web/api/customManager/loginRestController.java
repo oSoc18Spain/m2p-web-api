@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class loginRestController {
 	@Autowired
-	private Integer answer;
+	private login loginStatus;
 	
 	@GetMapping("/login")
-	public Integer answer() {
+	public String answer() {
+		loginStatus = new login();
 		
-		answer = 666;
+		//answer = 666;
 		
-		return answer;
+		return loginStatus.answer();
 	}
 }
