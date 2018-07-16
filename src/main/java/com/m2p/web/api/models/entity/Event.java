@@ -37,7 +37,7 @@ public class Event implements Serializable {
 	
 	@NotEmpty
 	@NotNull
-	private String descripcion;
+	private String description;
 	
 	@NotEmpty
 	@NotNull
@@ -97,12 +97,12 @@ public class Event implements Serializable {
 		this.stateEvent = stateEvent;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public List<Log> getLogs() {

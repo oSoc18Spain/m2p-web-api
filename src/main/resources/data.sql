@@ -10,16 +10,20 @@ INSERT INTO user(id, password, role_id) VALUES('Y987652', 'abc987652', 3);
 INSERT INTO user(id, password, role_id) VALUES('Y987651', 'abc987651', 1);
 
 -- Lineas
-INSERT INTO linechanel(name, type) VALUES('Línea 01','PROD');
-INSERT INTO linechanel(name, type) VALUES('Línea 02','PROD');
-INSERT INTO linechanel(name, type) VALUES('Línea 03','PROD');
+INSERT INTO linechannel(line_channel_id, type) VALUES(1,'PROD');
+INSERT INTO linechannel(line_channel_id, type) VALUES(2,'PROD');
+INSERT INTO linechannel(line_channel_id, type) VALUES(3,'PROD');
 
 -- Maquinas
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 01',1);
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 02',1);
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 03',1);
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 01',1,'PROD');
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 02',1,'PROD');
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 03',1,'PROD');
 
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 04',2);
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 05',2);
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 04',2,'PROD');
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 05',2,'PROD');
 
-INSERT INTO machine(change_ultimate, description, linechanel_id) VALUES('2018-07-15 20:00:00','Maquina 06',3);
+INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 06',3,'PROD');
+
+-- Eventos
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','NA','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','NA','MANUAL');
