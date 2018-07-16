@@ -1,13 +1,13 @@
 -- Roles
 INSERT INTO role(name) VALUES('Operador');
 INSERT INTO role(name) VALUES('Mecanico');
-INSERT INTO role(name) VALUES('Supervisor');
+INSERT INTO role(name) VALUES('QA');
 
 -- Usuarios
-INSERT INTO user(password, role_id) VALUES('12345',1);
-INSERT INTO user(password, role_id) VALUES('abc12345',1);
-INSERT INTO user(password, role_id) VALUES('123',1);
-INSERT INTO user(password, role_id) VALUES('123',2);
+INSERT INTO user(id, password, role_id) VALUES('Y987654', 'abc987654', 1);
+INSERT INTO user(id, password, role_id) VALUES('Y987653', 'abc987653', 2);
+INSERT INTO user(id, password, role_id) VALUES('Y987652', 'abc987652', 3);
+INSERT INTO user(id, password, role_id) VALUES('Y987651', 'abc987651', 1);
 
 -- Lineas
 INSERT INTO linechanel(name, type) VALUES('Línea 01','PROD');

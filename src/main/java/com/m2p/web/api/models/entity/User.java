@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,8 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="user")
 public class User implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	
 	@NotEmpty
 	@NotNull
@@ -52,11 +49,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
