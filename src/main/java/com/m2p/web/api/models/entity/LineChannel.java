@@ -14,25 +14,25 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="linechanel")
-public class LineChanel implements Serializable {
+@Table(name="linechannel")
+public class LineChannel implements Serializable {
 	
 	@EmbeddedId
-	private lineChanelId id;
+	private lineChannelId id;
 
-	@OneToMany(mappedBy="linechanelObj", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="linechannelObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Machine> machines;
 	
-	@OneToMany(mappedBy="linechanelObj", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="linechannelObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Suscription> suscriptions;
 	
-	public lineChanelId getId() {
+	public lineChannelId getId() {
 		return id;
 	}
 
-	public void setId(lineChanelId id) {
+	public void setId(lineChannelId id) {
 		this.id = id;
 	}
 
@@ -56,22 +56,22 @@ public class LineChanel implements Serializable {
 	
 	
 	@Embeddable
-	public class lineChanelId implements Serializable {
+	public class lineChannelId implements Serializable {
 		
-		private Long lineChanelId;
+		private Long lineChannelId;
 		
 		private String type;
 		
-		public lineChanelId() {
+		public lineChannelId() {
 		}
 		
-		public lineChanelId(Long lineChanelId, String type) {
-			this.lineChanelId = lineChanelId;
+		public lineChannelId(Long lineChannelId, String type) {
+			this.lineChannelId = lineChannelId;
 			this.type = type;
 		}
 		
-		public Long getLineChanelId() {
-			return lineChanelId;
+		public Long getLineChannelId() {
+			return lineChannelId;
 		}
 
 		public String getType() {
@@ -81,15 +81,15 @@ public class LineChanel implements Serializable {
 		@Override
 		public boolean equals(Object o) {
 			if (this == o) return true;
-			if (!(o instanceof lineChanelId)) return false;
-			lineChanelId that = (lineChanelId) o;
-			return Objects.equals(getLineChanelId(), that.getLineChanelId()) &&
+			if (!(o instanceof lineChannelId)) return false;
+			lineChannelId that = (lineChannelId) o;
+			return Objects.equals(getLineChannelId(), that.getLineChannelId()) &&
 					Objects.equals(getType(), that.getType());
 		}
 		
 		@Override
 		public int hashCode() {
-			return Objects.hash(getLineChanelId(), getType());
+			return Objects.hash(getLineChannelId(), getType());
 	    }
 		
 		private static final long serialVersionUID = 1L;

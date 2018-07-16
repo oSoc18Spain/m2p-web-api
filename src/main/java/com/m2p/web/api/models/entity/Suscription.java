@@ -45,16 +45,16 @@ public class Suscription implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumns({
 		@JoinColumn(
-				name="line_chanel_id",
-				referencedColumnName="lineChanelId"
+				name="line_channel_id",
+				referencedColumnName="lineChannelId"
 		),
 		@JoinColumn(
-				name="line_chanel_type",
+				name="line_channel_type",
 				referencedColumnName="type"
 		)
 	})
 	@JsonIgnore
-	private LineChanel linechanelObj;
+	private LineChannel linechannelObj;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
@@ -77,12 +77,12 @@ public class Suscription implements Serializable {
 		this.dateSuscription = dateSuscription;
 	}
 
-	public LineChanel getLinechanelObj() {
-		return linechanelObj;
+	public LineChannel getLinechannelObj() {
+		return linechannelObj;
 	}
 
-	public void setLinechanelObj(LineChanel linechanelObj) {
-		this.linechanelObj = linechanelObj;
+	public void setLinechannelObj(LineChannel linechannelObj) {
+		this.linechannelObj = linechannelObj;
 	}
 
 	public User getUserObj() {
