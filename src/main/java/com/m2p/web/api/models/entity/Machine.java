@@ -40,8 +40,6 @@ public class Machine implements Serializable {
 	private String data;
 	
 	@Column(name="change_ultimate")
-	@NotEmpty
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")

@@ -20,4 +20,10 @@ public class MachineService implements IMachineService {
 	public List<Machine> findAll() {
 		return (List<Machine>) machineDao.findAll();
 	}
+
+	@Override
+	@Transactional
+	public void save(Machine machine) {
+		machineDao.save(machine);
+	}
 }
