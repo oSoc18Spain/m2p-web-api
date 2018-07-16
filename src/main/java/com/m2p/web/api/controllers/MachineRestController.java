@@ -32,7 +32,7 @@ public class MachineRestController {
 	@PostMapping("/machines")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Machine create(@RequestBody Machine machine) {
-		System.out.println("Fecha del sistema: "+new Date());
+		System.out.println("Fecha del sistema: " + new Date());
 		machine.setChangeUltimate(new Date());
 		machineService.save(machine);
 		return machine;
