@@ -19,8 +19,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -47,8 +45,7 @@ public class Event implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotEmpty
 	@NotNull
-	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
-	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
 	private Date date;
 	
 	@ManyToOne(fetch=FetchType.LAZY)

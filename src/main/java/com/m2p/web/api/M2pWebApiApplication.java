@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class M2pWebApiApplication {
 	@PostConstruct
 	void started() {
-		//TimeZone.setDefault(TimeZone.getTimeZone("UTC")); //GMT+2 
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC")); //GMT+2 
 	}
 	
 	public static void main(String[] args) {
