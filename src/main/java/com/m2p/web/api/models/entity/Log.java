@@ -14,8 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,8 +27,6 @@ public class Log implements Serializable {
 	private Long id;
 	
 	@Column(name="inidate")
-	@NotEmpty
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")

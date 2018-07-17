@@ -25,4 +25,10 @@ public class EventService implements IEventService {
 	public List<Event> findEventForState(String status) {
 		return eventDao.findByStatus(status);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Event findById(Long id) {
+		return eventDao.findById(id).orElse(null);
+	}
 }
