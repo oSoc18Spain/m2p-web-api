@@ -25,5 +25,7 @@ INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_
 INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 06',3,'PROD');
 
 -- Eventos
-INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','NA','MANUAL');
-INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','NA','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','pending','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','pending','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','in_progress','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','done','MANUAL');

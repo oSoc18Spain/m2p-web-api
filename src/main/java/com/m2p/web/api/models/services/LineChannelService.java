@@ -10,7 +10,7 @@ import com.m2p.web.api.models.dao.ILineChannelDao;
 import com.m2p.web.api.models.entity.LineChannel;
 
 @Service
-public class LineChannelService implements ILineChannel {
+public class LineChannelService implements ILineChannelService {
 	
 	@Autowired
 	private ILineChannelDao linechannelDao;
