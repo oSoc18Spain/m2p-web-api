@@ -26,4 +26,10 @@ public class LineChannelService implements ILineChannelService {
 	public void save(LineChannel linechannel) {
 		linechannelDao.save(linechannel);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public LineChannel findById(Long id) {
+		return linechannelDao.findById(id).orElse(null);
+	}
 }

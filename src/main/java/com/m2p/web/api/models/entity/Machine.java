@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -39,6 +40,9 @@ public class Machine implements Serializable {
 	private String state;
 	
 	private String data;
+	
+	@Transient
+	private int lineChannelID;
 	
 	@Column(name="change_ultimate")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -130,6 +134,14 @@ public class Machine implements Serializable {
 
 	public void setChangeUltimate(Date changeUltimate) {
 		this.changeUltimate = changeUltimate;
+	}
+
+	public int getLineChannelID() {
+		return lineChannelID;
+	}
+
+	public void setLineChannelID(int lineChannelID) {
+		this.lineChannelID = lineChannelID;
 	}
 
 	private static final long serialVersionUID = 1L;
