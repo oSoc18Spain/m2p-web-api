@@ -33,6 +33,10 @@ public class User implements Serializable {
 	@JsonIgnore
 	private List<Event> assignedEvents;
 	
+	@OneToMany(mappedBy="userCreateObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Event> createdEvents;
+	
 	@OneToMany(mappedBy="userRespObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Log> logs;

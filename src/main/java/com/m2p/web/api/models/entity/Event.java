@@ -69,6 +69,21 @@ public class Event implements Serializable {
 	@JsonIgnore
 	private User userAssignedObj;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="linechannel_id")
+	@JsonIgnore
+	private LineChannel linelchannelObj;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="role_id")
+	@JsonIgnore
+	private Role roleObj;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="usercreate_id")
+	@JsonIgnore
+	private User userCreateObj;
+	
 	@OneToMany(mappedBy="eventObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Notification> notifications;

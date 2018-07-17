@@ -38,6 +38,10 @@ public class LineChannel implements Serializable {
 	@JsonIgnore
 	private List<Suscription> suscriptions;
 	
+	@OneToMany(mappedBy="linelchannelObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Event> events;
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,6 +80,14 @@ public class LineChannel implements Serializable {
 
 	public void setSuscriptions(List<Suscription> suscriptions) {
 		this.suscriptions = suscriptions;
+	}
+	
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	private static final long serialVersionUID = 1L;

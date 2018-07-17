@@ -28,6 +28,10 @@ public class Role implements Serializable {
 	@JsonIgnore
 	private List<User> usuarios;
 	
+	@OneToMany(mappedBy="roleObj", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private List<Event> events;
+	
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +54,14 @@ public class Role implements Serializable {
 
 	public void setUsuarios(List<User> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	private static final long serialVersionUID = 1L;
