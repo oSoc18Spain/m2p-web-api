@@ -2,23 +2,33 @@ package com.m2p.web.api.models.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="linechannel")
 public class LineChannel implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+
+	@NotEmpty
+	@NotNull
+	private Long lineChannelId;
 	
-	@EmbeddedId
-	private lineChannelId id;
+	@NotEmpty
+	@NotNull
+	private String type;
 
 	@OneToMany(mappedBy="linechannelObj", fetch=FetchType.LAZY)
 	@JsonIgnore
@@ -28,14 +38,30 @@ public class LineChannel implements Serializable {
 	@JsonIgnore
 	private List<Suscription> suscriptions;
 	
-	public lineChannelId getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(lineChannelId id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
+	public Long getLineChannelId() {
+		return lineChannelId;
+	}
+
+	public void setLineChannelId(Long lineChannelId) {
+		this.lineChannelId = lineChannelId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public List<Machine> getMachines() {
 		return machines;
 	}
@@ -51,47 +77,6 @@ public class LineChannel implements Serializable {
 	public void setSuscriptions(List<Suscription> suscriptions) {
 		this.suscriptions = suscriptions;
 	}
-	
-	private static final long serialVersionUID = 1L;
-	
-	
-	@Embeddable
-	public class lineChannelId implements Serializable {
-		
-		private Long lineChannelId;
-		
-		private String type;
-		
-		//public lineChannelId() {
-		//}
-		
-		public lineChannelId(Long lineChannelId, String type) {
-			this.lineChannelId = lineChannelId;
-			this.type = type;
-		}
-		
-		public Long getLineChannelId() {
-			return lineChannelId;
-		}
 
-		public String getType() {
-			return type;
-		}
-		
-		@Override
-		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (!(o instanceof lineChannelId)) return false;
-			lineChannelId that = (lineChannelId) o;
-			return Objects.equals(getLineChannelId(), that.getLineChannelId()) &&
-					Objects.equals(getType(), that.getType());
-		}
-		
-		@Override
-		public int hashCode() {
-			return Objects.hash(getLineChannelId(), getType());
-	    }
-		
-		private static final long serialVersionUID = 1L;
-	}
+	private static final long serialVersionUID = 1L;
 }
