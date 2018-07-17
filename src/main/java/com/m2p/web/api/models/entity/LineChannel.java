@@ -62,8 +62,8 @@ public class LineChannel implements Serializable {
 		
 		private String type;
 		
-		public lineChannelId() {
-		}
+		//public lineChannelId() {
+		//}
 		
 		public lineChannelId(Long lineChannelId, String type) {
 			this.lineChannelId = lineChannelId;

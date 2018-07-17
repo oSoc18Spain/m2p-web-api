@@ -48,7 +48,7 @@ public class Event implements Serializable {
 	@NotEmpty
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
-	private Date time;
+	private Date timeInSeconds;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="task_id")
@@ -80,13 +80,13 @@ public class Event implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public Date getTime() {
-		return time;
+
+	public Date getTimeInSeconds() {
+		return timeInSeconds;
 	}
 
-	public void setDate(Date time) {
-		this.time = time;
+	public void setTimeInSeconds(Date timeInSeconds) {
+		this.timeInSeconds = timeInSeconds;
 	}
 
 	public String getStatus() {
