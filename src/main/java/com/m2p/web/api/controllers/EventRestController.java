@@ -24,7 +24,11 @@ public class EventRestController {
 		return eventService.findAll();
 	}
 	
-	@GetMapping("/eventprueba")
+	/**
+	 * Devuelve toda la información de los eventos, agrupados por su respectivo estado
+	 * @return
+	 */
+	@GetMapping("/dashboard")
 	public EventManager eventprueba(){
 		EventManager _eventManager = new EventManager(200, 
 												  	  eventService.findEventForState("pending"),
