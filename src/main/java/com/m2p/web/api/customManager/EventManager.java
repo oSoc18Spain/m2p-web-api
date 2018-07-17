@@ -26,6 +26,4 @@ public class EventManager {
 	public void setColumns(List<Event> columns) {
 		this.columns = columns;
 	}
-	
-	
 }
