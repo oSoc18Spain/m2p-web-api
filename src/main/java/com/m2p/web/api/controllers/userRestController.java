@@ -21,6 +21,7 @@ public class userRestController
 	 @GetMapping("/user/{id}")
 	 public User getUserById(@PathVariable String id)
 	 {
-		 return userService.findUserById(id);
+		 System.out.println("-------------------------------"+id);
+		 return userService.findById(id);
 	 }
 }

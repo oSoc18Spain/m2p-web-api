@@ -14,8 +14,8 @@ public class UserService implements IUserService
 	
 	@Override
 	@Transactional(readOnly = true)
-	public User findUserById(String id)
+	public User findById(String id)
 	{
-		return userDao.findUserById(id);
+		return userDao.findById(id);
 	}
 }
