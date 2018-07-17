@@ -26,7 +26,10 @@ public class EventRestController {
 	
 	@GetMapping("/eventprueba")
 	public EventManager eventprueba(){
-		EventManager _eventManager = new EventManager(200, eventService.findAll());
+		EventManager _eventManager = new EventManager(200, 
+												  	  eventService.findEventForState("pending"),
+													  eventService.findEventForState("in_progress"),
+													  eventService.findEventForState("done"));
 		return _eventManager;
 	}
 }

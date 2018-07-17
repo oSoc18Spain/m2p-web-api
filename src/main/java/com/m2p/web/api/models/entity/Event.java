@@ -29,13 +29,15 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name="state_event")
 	@NotEmpty
 	@NotNull
-	private String stateEvent; // {NA, EP, F}
+	private String status; // {pending, in_progress, done}
 	
+	@Column(name="description")
 	@NotEmpty
 	@NotNull
-	private String description;
+	private String title;
 	
 	@NotEmpty
 	@NotNull
@@ -46,10 +48,11 @@ public class Event implements Serializable {
 	@NotEmpty
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
-	private Date date;
+	private Date time;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="task_id")
+	@JsonIgnore
 	private Task taskObj;
 	
 	@OneToMany(mappedBy="eventObj", fetch=FetchType.LAZY)
@@ -78,28 +81,28 @@ public class Event implements Serializable {
 		this.id = id;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getTime() {
+		return time;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(Date time) {
+		this.time = time;
 	}
 
-	public String getStateEvent() {
-		return stateEvent;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setStateEvent(String stateEvent) {
-		this.stateEvent = stateEvent;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public List<Log> getLogs() {
