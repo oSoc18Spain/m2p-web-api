@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.m2p.web.api.customManager.EventCreateManager;
 import com.m2p.web.api.customManager.EventManager;
 import com.m2p.web.api.models.entity.Event;
+import com.m2p.web.api.models.entity.Notification;
 import com.m2p.web.api.models.services.IEventService;
 import com.m2p.web.api.models.services.ILineChannelService;
 import com.m2p.web.api.models.services.IMachineService;
+import com.m2p.web.api.models.services.INotificationService;
 import com.m2p.web.api.models.services.IRoleService;
 import com.m2p.web.api.models.services.ITaskService;
 import com.m2p.web.api.models.services.IUserService;
@@ -46,6 +48,9 @@ public class EventRestController {
 	@Autowired
 	private ILineChannelService _lineChannelService;
 	
+	@Autowired
+	private INotificationService _notificationService;
+	
 	@GetMapping("/events")
 	public List<Event> index(){
 		return _eventService.findAll();
@@ -70,7 +75,7 @@ public class EventRestController {
 	}
 	
 	/**
-	 * Evento creado por el usuario (Manual)
+	 * Evento creado por el usuario (Manual). Además tambien guarda la Notificación que genera el evento
 	 * @param data
 	 * @return
 	 */
@@ -84,7 +89,7 @@ public class EventRestController {
 		_eventObj.setStatus("pending");
 		
 		if(data.getId_role_assigned() != 0 ) _eventObj.setRoleObj(_roleService.findById(Long.valueOf(data.getId_role_assigned())));
-		if(data.getId_employee_assigned() != "0" ) { 
+		if( !data.getId_employee_assigned().equalsIgnoreCase("0") ) { 
 			_eventObj.setUserAssignedObj(_userService.findById(data.getId_employee_assigned()));
 			_eventObj.setStatus("in_progress");
 		}
@@ -95,6 +100,15 @@ public class EventRestController {
 		_eventObj.setLinelchannelObj(_lineChannelService.findById(Long.valueOf(data.getId_line())));
 		
 		_eventService.save(_eventObj);
+		
+		Notification _notificationObj = new Notification();
+		_notificationObj.setDate(new Date());
+		_notificationObj.setType("manual");
+		if(data.getId_machine() != 0 ) _notificationObj.setMachineObj(_machineService.findById(Long.valueOf(data.getId_machine())));
+		_notificationObj.setMessage(data.getDescription());
+		_notificationObj.setEventObj(_eventObj);
+		_notificationService.save(_notificationObj);
+		
 		return _eventObj;
 	}
 }

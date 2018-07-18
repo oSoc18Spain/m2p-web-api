@@ -45,8 +45,6 @@ public class Event implements Serializable {
 	
 	@Column(name="date")
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty
-	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
 	private Date timeInSeconds;
 	
