@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.m2p.web.api.customManager.EventCreateManager;
+import com.m2p.web.api.customManager.EventForLineManager;
 import com.m2p.web.api.customManager.EventManager;
 import com.m2p.web.api.models.entity.Event;
 import com.m2p.web.api.models.entity.Notification;
@@ -110,5 +112,19 @@ public class EventRestController {
 		_notificationService.save(_notificationObj);
 		
 		return _eventObj;
+	}
+	
+	/**
+	 * Función que retorna todos los eventos de la linea: Eventos Pendientes y Eventos Asignados al Usarios
+	 * eventxline?userId=XXX&linerchannelId=XXX
+	 * @param userId
+	 * @param linerchannelId
+	 * @return
+	 */
+	@GetMapping("/eventxline")
+	public EventForLineManager getEventeForLine(@RequestParam String userId, @RequestParam Long linerchannelId ) {
+		EventForLineManager _data = new EventForLineManager(_eventService.findByLinexStatus(linerchannelId, "pending"),
+				_eventService.findByUser(userId));
+		return _data;
 	}
 }

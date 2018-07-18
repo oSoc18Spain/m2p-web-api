@@ -9,4 +9,6 @@ public interface IEventService {
 	public List<Event> findEventForState(String status);
 	public Event findById(Long id);
 	public void save(Event event);
+	public List<Event> findByLinexStatus(Long lineaId, String status);
+	public List<Event> findByUser(String userId);
 }

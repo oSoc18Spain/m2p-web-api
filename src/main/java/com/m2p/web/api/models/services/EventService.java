@@ -36,5 +36,17 @@ public class EventService implements IEventService {
 	@Transactional
 	public void save(Event event) {
 		eventDao.save(event);
-	}	
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Event> findByLinexStatus(Long lineaId, String status) {
+		return eventDao.findByLinexStatus(lineaId, status);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Event> findByUser(String userId) {
+		return eventDao.findByUser(userId);
+	}
 }
