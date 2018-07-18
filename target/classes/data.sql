@@ -16,18 +16,18 @@ INSERT INTO linechannel(line_channel_id, type) VALUES(53,'PRODUCCION');
 INSERT INTO linechannel(line_channel_id, type) VALUES(7,'ENVASADO');
 
 -- Maquinas
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 01',12,'PRODUCCION');
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 01',53,'PRODUCCION');
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 02',12,'PRODUCCION');
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 01',23,'ENVASADO');
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 02',53,'PRODUCCION');
-INSERT INTO machine(change_ultimate, description, line_channel_id, line_channel_type) VALUES('2018-07-15 20:00:00','Maquina 02',7,'ENVASADO');
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 01',1);
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 01',3);
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 02',1);
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 01',2);
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 02',3);
+INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-07-15 20:00:00','Maquina 02',4);
 
 -- Tarea
 INSERT INTO task(code, name, type) VALUES('CLEAN-MACHINE','Limpiar Maquinas','EVENT');
 
 -- Eventos
---INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','pending','MANUAL');
---INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','pending','MANUAL');
---INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','in_progress','MANUAL');
---INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','done','MANUAL');
+-- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','pending','MANUAL');
+-- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','pending','MANUAL');
+-- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','in_progress','MANUAL');
+-- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','done','MANUAL');
