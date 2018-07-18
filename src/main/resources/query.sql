@@ -1,1 +1,1 @@
-select user.id, role.name from user,role where role.id=user.role_id;
+select u.id, r.name from user u, role r where u.role_id=r.id;
