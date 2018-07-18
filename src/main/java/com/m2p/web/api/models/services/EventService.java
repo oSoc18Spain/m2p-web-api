@@ -31,4 +31,10 @@ public class EventService implements IEventService {
 	public Event findById(Long id) {
 		return eventDao.findById(id).orElse(null);
 	}
+
+	@Override
+	@Transactional
+	public void save(Event event) {
+		eventDao.save(event);
+	}	
 }

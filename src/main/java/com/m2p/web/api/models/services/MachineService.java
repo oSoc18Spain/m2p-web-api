@@ -26,4 +26,10 @@ public class MachineService implements IMachineService {
 	public void save(Machine machine) {
 		machineDao.save(machine);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Machine findById(Long id) {
+		return machineDao.findById(id).orElse(null);
+	}
 }

@@ -167,6 +167,30 @@ public class Event implements Serializable {
 	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
 	}
+	
+	public LineChannel getLinelchannelObj() {
+		return linelchannelObj;
+	}
+
+	public void setLinelchannelObj(LineChannel linelchannelObj) {
+		this.linelchannelObj = linelchannelObj;
+	}
+
+	public Role getRoleObj() {
+		return roleObj;
+	}
+
+	public void setRoleObj(Role roleObj) {
+		this.roleObj = roleObj;
+	}
+
+	public User getUserCreateObj() {
+		return userCreateObj;
+	}
+
+	public void setUserCreateObj(User userCreateObj) {
+		this.userCreateObj = userCreateObj;
+	}
 
 	private static final long serialVersionUID = 1L;
 }
