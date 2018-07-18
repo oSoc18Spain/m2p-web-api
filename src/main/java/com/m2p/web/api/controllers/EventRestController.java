@@ -124,7 +124,7 @@ public class EventRestController {
 	@GetMapping("/eventxline")
 	public EventForLineManager getEventeForLine(@RequestParam String userId, @RequestParam Long linerchannelId ) {
 		EventForLineManager _data = new EventForLineManager(_eventService.findByLinexStatus(linerchannelId, "pending"),
-				_eventService.findByUser(userId));
+				_eventService.findByUser(userId, linerchannelId));
 		return _data;
 	}
 }

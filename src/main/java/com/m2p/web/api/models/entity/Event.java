@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -85,6 +86,9 @@ public class Event implements Serializable {
 	@OneToMany(mappedBy="eventObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Notification> notifications;
+	
+	@Transient
+	private Long machine_id;
 	
 	public Long getId() {
 		return id;
@@ -188,6 +192,14 @@ public class Event implements Serializable {
 
 	public void setUserCreateObj(User userCreateObj) {
 		this.userCreateObj = userCreateObj;
+	}
+
+	public Long getMachine_id() {
+		return (machineObj != null)?machineObj.getId():0L;
+	}
+
+	public void setMachine_id(Long machine_id) {
+		this.machine_id = machine_id;
 	}
 
 	private static final long serialVersionUID = 1L;

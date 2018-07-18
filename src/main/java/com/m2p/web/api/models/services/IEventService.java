@@ -10,5 +10,5 @@ public interface IEventService {
 	public Event findById(Long id);
 	public void save(Event event);
 	public List<Event> findByLinexStatus(Long lineaId, String status);
-	public List<Event> findByUser(String userId);
+	public List<Event> findByUser(String userId, Long lineaId);
 }

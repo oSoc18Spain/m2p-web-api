@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.m2p.web.api.models.services.ILineChannelService;
+//import com.m2p.web.api.models.services.ILineChannelService;
 import com.m2p.web.api.models.services.IMachineService;
 import com.m2p.web.api.models.entity.Machine;
 
@@ -25,8 +25,8 @@ public class MachineRestController {
 	@Autowired
 	private IMachineService machineService;
 	
-	@Autowired
-	private ILineChannelService lineChannelService;
+	//@Autowired
+	//private ILineChannelService lineChannelService;
 	
 	@GetMapping("/machines")
 	public List<Machine> index(){

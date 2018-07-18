@@ -46,7 +46,7 @@ public class EventService implements IEventService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Event> findByUser(String userId) {
-		return eventDao.findByUser(userId);
+	public List<Event> findByUser(String userId, Long lineaId) {
+		return eventDao.findByUser(userId, lineaId);
 	}
 }
