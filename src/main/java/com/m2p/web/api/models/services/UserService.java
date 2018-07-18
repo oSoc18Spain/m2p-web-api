@@ -19,4 +19,11 @@ public class UserService implements IUserService
 	{
 		return userDao.findById(id).orElse(null);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public User findUserForLogin(String id, String password)
+	{
+		return (User)userDao;
+	}
 }
