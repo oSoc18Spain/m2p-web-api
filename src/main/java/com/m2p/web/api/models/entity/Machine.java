@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -55,16 +54,7 @@ public class Machine implements Serializable {
 	private List<Event> events;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumns({
-		@JoinColumn(
-				name="line_channel_id",
-				referencedColumnName="lineChannelId"
-		),
-		@JoinColumn(
-				name="line_channel_type",
-				referencedColumnName="type"
-		)
-	})
+	@JoinColumn(name="line_channel_id")
 	@JsonIgnore
 	private LineChannel linechannelObj;
 	
