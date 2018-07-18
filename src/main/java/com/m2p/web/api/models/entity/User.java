@@ -27,6 +27,7 @@ public class User implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="role_id")
+	@JsonIgnore
 	private Role roleObj;
 
 	@OneToMany(mappedBy="userAssignedObj", fetch=FetchType.LAZY)

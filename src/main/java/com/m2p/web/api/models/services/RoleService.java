@@ -20,4 +20,10 @@ public class RoleService implements IRoleService {
 	public List<Role> findAll() {
 		return (List<Role>)roleDao.findAll();
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Role findById(Long id) {
+		return roleDao.findById(id).orElse(null);
+	}
 }
