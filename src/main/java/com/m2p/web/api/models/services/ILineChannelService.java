@@ -8,4 +8,5 @@ public interface ILineChannelService {
 	public List<LineChannel> findAll();
 	public void save(LineChannel linechannel);
 	public LineChannel findById(Long id);
+	public List<LineChannel> findByUser(String userId);
 }

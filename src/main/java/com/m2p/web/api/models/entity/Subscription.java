@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,23 +22,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="suscription")
-public class Suscription implements Serializable {
+@Table(name="subscription")
+public class Subscription implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
-	@NotNull
 	private int state;
 	
-	@Column(name="datesuscription")
+	@Column(name="datesubscription")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
-	@NotEmpty
-	@NotNull
-	private Date dateSuscription;
+	private Date dateSubscription;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="line_channel_id")
@@ -59,12 +54,12 @@ public class Suscription implements Serializable {
 		this.id = id;
 	}
 	
-	public Date getDateSuscription() {
-		return dateSuscription;
+	public Date getDateSubscription() {
+		return dateSubscription;
 	}
 
-	public void setDateSuscription(Date dateSuscription) {
-		this.dateSuscription = dateSuscription;
+	public void setDateSubscription(Date dateSuscription) {
+		this.dateSubscription = dateSuscription;
 	}
 
 	public LineChannel getLinechannelObj() {

@@ -44,7 +44,7 @@ public class User implements Serializable {
 	
 	@OneToMany(mappedBy="userObj", fetch=FetchType.LAZY)
 	@JsonIgnore
-	private List<Suscription> suscriptions;
+	private List<Subscription> suscriptions;
 	
 	public String getPassword() {
 		return password;
@@ -86,11 +86,11 @@ public class User implements Serializable {
 		this.logs = logs;
 	}
 
-	public List<Suscription> getSuscriptions() {
+	public List<Subscription> getSuscriptions() {
 		return suscriptions;
 	}
 
-	public void setSuscriptions(List<Suscription> suscriptions) {
+	public void setSuscriptions(List<Subscription> suscriptions) {
 		this.suscriptions = suscriptions;
 	}
 	

@@ -28,4 +28,9 @@ public class LineChannelRestController {
 	public LineChannel getdata(@PathVariable Long id) {
 		return lineChannelService.findById(id);
 	}
+	
+	@GetMapping("/mylineschannels/{userId}")
+	public List<LineChannel> mysubscriptions(@PathVariable String userId){
+		return lineChannelService.findByUser(userId);
+	}
 }

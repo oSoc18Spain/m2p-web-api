@@ -10,10 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.m2p.web.api.models.services.IEventService;
 
 @Entity
 @Table(name="linechannel")
@@ -36,11 +40,18 @@ public class LineChannel implements Serializable {
 	
 	@OneToMany(mappedBy="linechannelObj", fetch=FetchType.LAZY)
 	@JsonIgnore
-	private List<Suscription> suscriptions;
+	private List<Subscription> suscriptions;
 	
 	@OneToMany(mappedBy="linelchannelObj", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Event> events;
+	
+	@Transient
+	private int n_alerts = 0;
+	
+	@Autowired
+	@Transient
+	IEventService _eventService;
 	
 	public Long getId() {
 		return id;
@@ -74,11 +85,11 @@ public class LineChannel implements Serializable {
 		this.machines = machines;
 	}
 
-	public List<Suscription> getSuscriptions() {
+	public List<Subscription> getSuscriptions() {
 		return suscriptions;
 	}
 
-	public void setSuscriptions(List<Suscription> suscriptions) {
+	public void setSuscriptions(List<Subscription> suscriptions) {
 		this.suscriptions = suscriptions;
 	}
 	
@@ -88,6 +99,15 @@ public class LineChannel implements Serializable {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+
+	public int getN_alerts() {
+		for (Event event : this.events) if(event.getStatus().equalsIgnoreCase("pending")) n_alerts++;
+		return n_alerts;
+	}
+
+	public void setN_alerts(int n_alerts) {
+		this.n_alerts = n_alerts;
 	}
 
 	private static final long serialVersionUID = 1L;

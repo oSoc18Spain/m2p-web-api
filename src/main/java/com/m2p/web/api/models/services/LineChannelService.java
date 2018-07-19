@@ -32,4 +32,9 @@ public class LineChannelService implements ILineChannelService {
 	public LineChannel findById(Long id) {
 		return linechannelDao.findById(id).orElse(null);
 	}
+
+	@Override
+	public List<LineChannel> findByUser(String userId) {
+		return linechannelDao.findByUser(userId);
+	}
 }
