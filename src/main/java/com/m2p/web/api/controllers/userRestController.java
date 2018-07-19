@@ -32,6 +32,50 @@ public class userRestController
 		 return userService.findById(id);
 	 } 
 	
+	 @RequestMapping(value = "/authenticate/token", method = RequestMethod.POST)
+	 public ResponseEntity<loginAnswerManager> token(@RequestBody loginReceiveManager loginRM)
+	 {
+		 System.out.println("Is Working");
+		 
+		 String idEmployee = loginRM.getId_employee();
+		 String password = loginRM.getPassword();
+		 
+		 System.out.println("JSON Receive: " + idEmployee + " | " + password);
+		 
+		 loginAnswerManager loginAM; 
+		 User userDB;
+		 
+		 userDB = userService.findById(idEmployee);
+		 
+		 if(userDB != null)
+		 {
+			 System.out.println("JSON Send: " + userDB.getId() + " | " +  userDB.getPassword()); 
+			 
+			 if(password.equals(userDB.getPassword()))
+			 {
+				 loginAM = new loginAnswerManager(
+						 200,
+						 new employee("fake-jwt-token")
+						 );
+			 }
+			 else
+			 {
+				 loginAM = new loginAnswerManager(
+						 400,
+						 new employee("fake-jwt-token")
+						 );
+			 }
+		 }
+		 else
+		 {
+			 loginAM = new loginAnswerManager(
+					 400,
+					 new employee("fake-jwt-token")
+					 );
+		 }
+		 
+		 return new ResponseEntity<loginAnswerManager>(loginAM, HttpStatus.OK);
+	 }
 	 @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	 public ResponseEntity<loginAnswerManager> authenticate(@RequestBody loginReceiveManager loginRM)
 	 {
