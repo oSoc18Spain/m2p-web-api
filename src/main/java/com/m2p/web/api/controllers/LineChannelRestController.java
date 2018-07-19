@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.m2p.web.api.models.entity.LineChannel;
 import com.m2p.web.api.models.services.ILineChannelService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class LineChannelRestController {

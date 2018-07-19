@@ -20,7 +20,7 @@ import com.m2p.web.api.models.services.ILineChannelService;
 import com.m2p.web.api.models.services.ISubscriptionService;
 import com.m2p.web.api.models.services.IUserService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class SubscriptionRestController {

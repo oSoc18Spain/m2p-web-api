@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.m2p.web.api.models.services.IMachineService;
 import com.m2p.web.api.models.entity.Machine;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class MachineRestController {

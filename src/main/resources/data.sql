@@ -27,7 +27,7 @@ INSERT INTO machine(change_ultimate, description, line_channel_id) VALUES('2018-
 INSERT INTO task(code, name, type) VALUES('CLEAN-MACHINE','Limpiar Maquinas','EVENT');
 
 -- Eventos
--- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','pending','MANUAL');
--- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','pending','MANUAL');
--- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','in_progress','MANUAL');
--- INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','done','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','MANTENIMIENTO','pending','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','pending','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','in_progress','MANUAL');
+INSERT INTO event(date, description, state_event, type) VALUES('2018-07-15 20:00:00','LIMPIEZA','done','MANUAL');

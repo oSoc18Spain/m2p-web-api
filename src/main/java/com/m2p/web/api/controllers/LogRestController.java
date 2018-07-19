@@ -18,7 +18,7 @@ import com.m2p.web.api.models.entity.Log;
 import com.m2p.web.api.models.services.IEventService;
 import com.m2p.web.api.models.services.ILogService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class LogRestController {

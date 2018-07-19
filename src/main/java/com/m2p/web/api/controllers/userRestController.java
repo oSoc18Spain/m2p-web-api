@@ -17,7 +17,7 @@ import com.m2p.web.api.customManager.loginReceiveManager;
 import com.m2p.web.api.models.entity.User;
 import com.m2p.web.api.models.services.IUserService;
 
-@CrossOrigin(origins = {"hhtp://localhost:4200"})
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class userRestController

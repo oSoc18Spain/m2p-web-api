@@ -28,7 +28,7 @@ import com.m2p.web.api.models.services.IRoleService;
 import com.m2p.web.api.models.services.ITaskService;
 import com.m2p.web.api.models.services.IUserService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class EventRestController {

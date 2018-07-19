@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.m2p.web.api.models.services.IRoleService;
 import com.m2p.web.api.models.entity.Role;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin()
 @RestController
 @RequestMapping("/api")
 public class RoleRestController {
